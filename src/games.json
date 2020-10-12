@@ -1,0 +1,28 @@
+{
+  "games": [
+    {
+      "name": "apex legends",
+      "property": "apexLegendWins"
+    },
+    {
+      "name": "fall guys",
+      "property": "fallGuysWins"
+    },
+    {
+      "name": "deceit",
+      "property": "deceitWins"
+    },
+    {
+      "name": "world of warships",
+      "property": "wowWins"
+    },
+    {
+      "name": "among us",
+      "property": "amongUsWins"
+    },
+    {
+      "name": "Fifa21",
+      "property": "fifaWins"
+    }
+  ]
+}
