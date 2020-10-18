@@ -1,15 +1,9 @@
 const User = require("../../models/UserSchema");
 
-function newProperty(searchTerm, currentWins = 0, gameStore) {
-  const { games } = gameStore;
-
-  // Find first game that matches search term
-  const match = games.find((element) => element.search.includes(searchTerm));
-  if (!match) return;
-
+function createProperty(currentWins = 0, game) {
   // Use the matched games 'property' value
   // which acts as the property name for the new game object.
-  const gameName = match.property;
+  const gameName = game.property;
   const gameWins = parseInt(currentWins);
 
   // Returns true if gameWins is not a number
@@ -29,22 +23,35 @@ module.exports = {
   description: "Adds a new game property to DB document",
 
   async execute(message, args, id, gameStore) {
-    const doc = await User.findOne({
+    const { games } = gameStore;
+
+    const data = await User.findOne({
       discordID: id,
     });
-    if (!doc) {
+    if (!data) {
       return message.reply("No user exists, please create your profile!");
     }
 
-    // Returns new game property to set
-    const newGame = newProperty(args[0], args[1], gameStore);
-    if (!newGame) {
+    const doc = data.toObject();
+
+    // Find first game that matches search term
+    const game = games.find((element) => element.search.includes(args[0]));
+    if (!game) {
       return message.reply(
         "There is no game with that name within the database!"
       );
     }
 
-    if (doc) {
+    const property = game.property;
+
+    // Returns new game property to set
+    const newGame = createProperty(args[1], game);
+
+    // Check if search term matches property on document
+    // & return total wins for that game
+    if (doc.hasOwnProperty(property)) {
+      return message.reply(`You already have ${game.name} in your profile!`);
+    } else {
       await User.findByIdAndUpdate(
         { _id: doc._id },
         { $set: newGame },

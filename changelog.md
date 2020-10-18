@@ -5,7 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.2] - 2020-10-18
+
+## Added
+
+- Check module now checks if the game is a valid game within the GameStore file
+- Add module now checks if a profile already has the game within the profile
+
+## Fix
+
+- Fixed previous issue where property value returning undefined after using !won command by converting returned data toObject
+
 ## [1.0.1] - 2020-10-18
+
+## Added
+
+- Check module now checks if the game is a valid game within the GameStore file
 
 ## Fix
 

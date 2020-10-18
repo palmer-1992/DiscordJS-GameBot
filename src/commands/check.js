@@ -20,11 +20,15 @@ module.exports = {
 
     // Find first game that matches search term
     const match = games.find((element) => element.search.includes(args[0]));
+    if (!match) {
+      return message.reply(
+        "There is no game with that name within the database!"
+      );
+    }
     const property = match.property;
 
-    // Loop over document & check if search term matches property
+    // Check if search term matches property on document
     // & return total wins for that game
-
     if (doc.hasOwnProperty(property)) {
       return message.reply(`You have ${doc[property]} wins on ${match.name}`);
     } else {

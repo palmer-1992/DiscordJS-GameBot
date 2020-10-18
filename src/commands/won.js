@@ -10,8 +10,7 @@ module.exports = {
     });
 
     if (!data) {
-      message.reply("No user exists, please create your profile!");
-      return;
+      return message.reply("No user exists, please create your profile!");
     }
 
     // Find first game that matches search term
@@ -27,8 +26,8 @@ module.exports = {
         { _id: doc._id },
         { $inc: { [property]: 1 } },
         { new: true, strict: false }
-      ).then((newDoc) => {
-        newDoc.toObject();
+      ).then((data) => {
+        const newDoc = data.toObject();
 
         return message.reply(
           `You now have ${newDoc[property]} wins on ${match.name}`
