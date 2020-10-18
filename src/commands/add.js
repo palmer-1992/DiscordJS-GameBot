@@ -4,13 +4,19 @@ function newProperty(searchTerm, currentWins = 0, gameStore) {
   const { games } = gameStore;
 
   // Find first game that matches search term
-  const match = games.find((element) => element.name.includes(searchTerm));
-  if (!match) return false;
+  const match = games.find((element) => element.search.includes(searchTerm));
+  if (!match) return;
 
   // Use the matched games 'property' value
   // which acts as the property name for the new game object.
   const gameName = match.property;
   const gameWins = parseInt(currentWins);
+
+  // Returns true if gameWins is not a number
+  const isString = isNaN(gameWins);
+  if (isString) {
+    gameWins = 0;
+  }
 
   // Creates key:value pair for new game object
   return {
@@ -27,8 +33,7 @@ module.exports = {
       discordID: id,
     });
     if (!doc) {
-      message.reply("No user exists, please create your profile!");
-      return;
+      return message.reply("No user exists, please create your profile!");
     }
 
     // Returns new game property to set

@@ -2,7 +2,7 @@ const User = require("../../models/UserSchema");
 
 module.exports = {
   name: "won",
-  description: "Increments the score of the game paramter",
+  description: "Increments the score of the game property",
 
   async execute(message, args, id, { games }) {
     const data = await User.findOne({
@@ -19,7 +19,7 @@ module.exports = {
     const property = match.property;
 
     // Converts mongoDB document to regular object
-    // makes it possible to check property
+    // makes it possible to check properties
     const doc = data.toObject();
 
     if (doc.hasOwnProperty(property)) {
@@ -28,8 +28,10 @@ module.exports = {
         { $inc: { [property]: 1 } },
         { new: true, strict: false }
       ).then((newDoc) => {
+        newDoc.toObject();
+
         return message.reply(
-          `You have ${newDoc[property]} wins on ${match.name}`
+          `You now have ${newDoc[property]} wins on ${match.name}`
         );
       });
     } else {

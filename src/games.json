@@ -1,28 +1,39 @@
 {
   "games": [
     {
-      "name": "apex legends",
-      "property": "apexLegendWins"
+      "name": "Apex Legends",
+      "property": "apexLegendWins",
+      "search": "apex-legends"
     },
     {
-      "name": "fall guys",
-      "property": "fallGuysWins"
+      "name": "Fall Guys",
+      "property": "fallGuysWins",
+      "search": "fall-guys"
     },
     {
-      "name": "deceit",
-      "property": "deceitWins"
+      "name": "Deceit",
+      "property": "deceitWins",
+      "search": "deceit"
     },
     {
-      "name": "world of warships",
-      "property": "wowWins"
+      "name": "World of Warships",
+      "property": "wowWins",
+      "search": "world-of-warships"
     },
     {
-      "name": "among us",
-      "property": "amongUsWins"
+      "name": "Among Us",
+      "property": "amongUsWins",
+      "search": "among-us"
     },
     {
-      "name": "Fifa21",
-      "property": "fifaWins"
+      "name": "Fifa 21",
+      "property": "fifaWins",
+      "search": "fifa21"
+    },
+    {
+      "name": "Modern Warefare",
+      "property": "modernWarefareWins",
+      "search": "modern-warefare"
     }
   ]
 }

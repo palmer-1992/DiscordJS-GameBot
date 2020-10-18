@@ -22,6 +22,8 @@ This bot is still in development.
 ## Commands
 
 - !createuser - Creates the profile in the DB based on discord name.
-- !add [GAME] - This adds a new game into the profile (Game must be in 'GameStore').
+- !add [GAME] [*Existing wins] - This adds a new game into the profile (Game must be in 'GameStore').
 - !check [GAME] - This checks if the game is in the profile & returns total win count.
 - !won [GAME] - This increments the chosen game count by 1.
+
+* Existing wins are optional, default value is 0.
