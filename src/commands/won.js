@@ -15,7 +15,7 @@ module.exports = {
     }
 
     // Find first game that matches search term
-    const match = games.find((element) => element.name.includes(args[0]));
+    const match = games.find((element) => element.search.includes(args[0]));
     const property = match.property;
 
     // Converts mongoDB document to regular object

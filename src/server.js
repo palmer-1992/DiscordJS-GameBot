@@ -68,7 +68,7 @@ bot.on("message", async (message) => {
       }
     } catch (error) {
       message.channel.send("An error has occured...");
-      console.log(error);
+      console.log("Error in app:", error);
     }
   }
 });
