@@ -5,10 +5,6 @@ const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const db = require("../config/database");
 
-// Import & Parse Game store
-const rawData = fs.readFileSync("./src/games.json");
-const gameStore = JSON.parse(rawData);
-
 // Create prefx for commands
 const PREFIX = "!";
 const commandFiles = fs
@@ -46,29 +42,24 @@ bot.on("message", async (message) => {
       return;
     }
 
-    try {
-      // Create user command
-      if (commandType === "createuser") {
-        bot.commands.get("createuser").execute(message, args, id);
-      }
+    // Creates user profile using discordID
+    if (commandType === "createuser") {
+      bot.commands.get("createuser").execute(message, args, id);
+    }
 
-      // Check specific game command
-      if (commandType === "check") {
-        bot.commands.get("check").execute(message, args, id, gameStore);
-      }
+    // Check specific game command
+    if (commandType === "check") {
+      bot.commands.get("check").execute(message, args, id);
+    }
 
-      // Add victory to game
-      if (commandType === "won") {
-        bot.commands.get("won").execute(message, args, id, gameStore);
-      }
+    // Add victory to game
+    if (commandType === "won") {
+      bot.commands.get("won").execute(message, args, id);
+    }
 
-      // Add new game property
-      if (commandType === "add") {
-        bot.commands.get("add").execute(message, args, id, gameStore);
-      }
-    } catch (error) {
-      message.channel.send("An error has occured...");
-      console.log("Error in app:", error);
+    // Add new game property
+    if (commandType === "add") {
+      bot.commands.get("add").execute(message, args, id);
     }
   }
 });
